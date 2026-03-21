@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir)",
+      "Bash(node -e \"require\\(''fs''\\).writeFileSync\\(''C:/Users/Axel/Documents/Cris/Programacao/Landing 5 erros visuais/nodetest.txt'', ''node works''\\)\")",
+      "Bash(del \"C:/Users/Axel/Documents/Cris/Programacao/Landing 5 erros visuais/test.txt\")"
+    ]
+  }
+}
