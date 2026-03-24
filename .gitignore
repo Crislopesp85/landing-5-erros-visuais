@@ -40,3 +40,7 @@ Arquivos de Cris para claude/
 *.txt
 create_repo.json
 SETUP-E-DEPLOY.bat
+vercel_deploy.py
+deploy_result.json
+vercel_git_link*.json
+vercel_project*.json
