@@ -37,16 +37,16 @@ const erros = [
 
 const leadMagnets = [
   {
+    id: "guia-5-erros",
+    nome: "Guia: 5 Erros Visuais",
+    descricao:
+      "Descubra os 5 erros que fazem sua apresentação parecer amadora — e como corrigir cada um.",
+  },
+  {
     id: "checklist-interativo",
     nome: "Checklist Interativo",
     descricao:
       "Verifique se sua apresentação passa no teste dos 5 erros visuais mais comuns.",
-  },
-  {
-    id: "template-metodo-slide",
-    nome: "Template MÉTODO SLIDE",
-    descricao:
-      "Um modelo pronto para criar apresentações profissionais que vendem.",
   },
 ];
 
