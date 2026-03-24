@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 const WA_URL =
   "https://wa.me/5491125716184?text=Quero%20receber%20o%20Guia%3A%205%20Erros%20que%20Fazem%20sua%20Apresenta%C3%A7%C3%A3o%20Parecer%20Amadora";
@@ -33,9 +35,250 @@ const erros = [
   },
 ];
 
+const leadMagnets = [
+  {
+    id: "checklist-interativo",
+    nome: "Checklist Interativo",
+    descricao:
+      "Verifique se sua apresentação passa no teste dos 5 erros visuais mais comuns.",
+  },
+  {
+    id: "template-metodo-slide",
+    nome: "Template MÉTODO SLIDE",
+    descricao:
+      "Um modelo pronto para criar apresentações profissionais que vendem.",
+  },
+];
+
+function LeadForm({
+  leadMagnet,
+  onClose,
+}: {
+  leadMagnet: string;
+  onClose: () => void;
+}) {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [enviando, setEnviando] = useState(false);
+  const [erro, setErro] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setEnviando(true);
+    setErro("");
+
+    const { error } = await supabase
+      .from("leads")
+      .insert([{ nome, email, whatsapp, lead_magnet: leadMagnet }]);
+
+    if (error) {
+      setErro("Erro ao enviar. Tente novamente.");
+      setEnviando(false);
+      return;
+    }
+
+    const msg = encodeURIComponent(
+      `Olá! Meu nome é ${nome} e quero receber: ${leadMagnet}`
+    );
+    window.open(`https://wa.me/5491125716184?text=${msg}`, "_blank");
+    onClose();
+  }
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        backgroundColor: "rgba(0,0,0,0.8)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 9999,
+        padding: "24px",
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          backgroundColor: "#111",
+          border: "1px solid #333",
+          padding: "40px",
+          maxWidth: "460px",
+          width: "100%",
+          position: "relative",
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "16px",
+            right: "16px",
+            background: "none",
+            border: "none",
+            color: "#666",
+            fontSize: "1.5rem",
+            cursor: "pointer",
+          }}
+        >
+          ✕
+        </button>
+
+        <div
+          style={{
+            width: "40px",
+            height: "3px",
+            backgroundColor: "#E8192C",
+            marginBottom: "20px",
+          }}
+        />
+
+        <h3
+          style={{
+            fontFamily: "'Barlow Condensed', sans-serif",
+            fontWeight: 900,
+            fontSize: "1.5rem",
+            textTransform: "uppercase",
+            marginBottom: "8px",
+            color: "#fff",
+          }}
+        >
+          Receba o {leadMagnet}
+        </h3>
+
+        <p
+          style={{
+            color: "#888",
+            fontSize: "0.9rem",
+            fontFamily: "'DM Sans', sans-serif",
+            marginBottom: "28px",
+          }}
+        >
+          Preencha seus dados e receba o material pelo WhatsApp.
+        </p>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Seu nome"
+            required
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "14px 16px",
+              marginBottom: "12px",
+              backgroundColor: "#0A0A0A",
+              border: "1px solid #333",
+              color: "#fff",
+              fontSize: "1rem",
+              fontFamily: "'DM Sans', sans-serif",
+              outline: "none",
+            }}
+          />
+          <input
+            type="email"
+            placeholder="Seu melhor e-mail"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "14px 16px",
+              marginBottom: "12px",
+              backgroundColor: "#0A0A0A",
+              border: "1px solid #333",
+              color: "#fff",
+              fontSize: "1rem",
+              fontFamily: "'DM Sans', sans-serif",
+              outline: "none",
+            }}
+          />
+          <input
+            type="tel"
+            placeholder="WhatsApp (com DDD)"
+            required
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "14px 16px",
+              marginBottom: "20px",
+              backgroundColor: "#0A0A0A",
+              border: "1px solid #333",
+              color: "#fff",
+              fontSize: "1rem",
+              fontFamily: "'DM Sans', sans-serif",
+              outline: "none",
+            }}
+          />
+
+          {erro && (
+            <p
+              style={{
+                color: "#E8192C",
+                fontSize: "0.85rem",
+                marginBottom: "12px",
+              }}
+            >
+              {erro}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            disabled={enviando}
+            style={{
+              width: "100%",
+              backgroundColor: "#E8192C",
+              color: "#fff",
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: "1.1rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              padding: "16px",
+              border: "none",
+              cursor: enviando ? "not-allowed" : "pointer",
+              opacity: enviando ? 0.7 : 1,
+              transition: "all 0.2s ease",
+            }}
+          >
+            {enviando ? "Enviando..." : "Receber pelo WhatsApp"}
+          </button>
+
+          <p
+            style={{
+              marginTop: "12px",
+              fontSize: "0.75rem",
+              color: "#555",
+              fontFamily: "'DM Sans', sans-serif",
+              textAlign: "center",
+            }}
+          >
+            Seus dados estão seguros. Sem spam.
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
+  const [formAberto, setFormAberto] = useState<string | null>(null);
+
   return (
     <main style={{ backgroundColor: "#0A0A0A", color: "#ffffff" }}>
+      {/* Modal do formulário */}
+      {formAberto && (
+        <LeadForm
+          leadMagnet={formAberto}
+          onClose={() => setFormAberto(null)}
+        />
+      )}
+
       {/* ───────────────────────────────────────────
           SEÇÃO 1 — HERO
       ─────────────────────────────────────────── */}
@@ -50,7 +293,6 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        {/* Fundo com gradiente sutil */}
         <div
           style={{
             position: "absolute",
@@ -70,7 +312,6 @@ export default function Home() {
             zIndex: 1,
           }}
         >
-          {/* Tag */}
           <div
             style={{
               display: "inline-block",
@@ -88,7 +329,6 @@ export default function Home() {
             Guia Gratuito
           </div>
 
-          {/* Título principal */}
           <h1
             style={{
               fontFamily: "'Barlow Condensed', sans-serif",
@@ -105,7 +345,6 @@ export default function Home() {
             Amadora
           </h1>
 
-          {/* Subtítulo */}
           <p
             style={{
               fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
@@ -121,11 +360,10 @@ export default function Home() {
             corrigir antes da sua próxima apresentação.
           </p>
 
-          {/* CTA */}
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() =>
+              setFormAberto("Guia: 5 Erros que Fazem sua Apresentação Parecer Amadora")
+            }
             style={{
               display: "inline-block",
               backgroundColor: "#E8192C",
@@ -136,29 +374,25 @@ export default function Home() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               padding: "18px 48px",
-              textDecoration: "none",
+              border: "none",
+              cursor: "pointer",
               transition: "all 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "#c41424";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(-2px)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+              e.currentTarget.style.backgroundColor = "#c41424";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
                 "0 8px 30px rgba(232,25,44,0.4)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "#E8192C";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(0)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+              e.currentTarget.style.backgroundColor = "#E8192C";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             Quero Receber o Guia Grátis
-          </a>
+          </button>
 
-          {/* Nota */}
           <p
             style={{
               marginTop: "20px",
@@ -182,7 +416,6 @@ export default function Home() {
         }}
       >
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          {/* Linha vermelha */}
           <div
             style={{
               width: "56px",
@@ -205,7 +438,6 @@ export default function Home() {
             O que está dentro do guia
           </h2>
 
-          {/* Cards dos 5 erros */}
           <div
             style={{
               display: "flex",
@@ -226,7 +458,6 @@ export default function Home() {
                   transition: "all 0.2s ease",
                 }}
               >
-                {/* Número */}
                 <span
                   style={{
                     fontFamily: "'Barlow Condensed', sans-serif",
@@ -241,7 +472,6 @@ export default function Home() {
                   {erro.numero}
                 </span>
 
-                {/* Texto */}
                 <div>
                   <p
                     style={{
@@ -269,12 +499,11 @@ export default function Home() {
             ))}
           </div>
 
-          {/* CTA abaixo dos cards */}
           <div style={{ textAlign: "center", marginTop: "60px" }}>
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() =>
+                setFormAberto("Guia: 5 Erros que Fazem sua Apresentação Parecer Amadora")
+              }
               style={{
                 display: "inline-block",
                 backgroundColor: "#E8192C",
@@ -285,11 +514,118 @@ export default function Home() {
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 padding: "16px 40px",
-                textDecoration: "none",
+                border: "none",
+                cursor: "pointer",
               }}
             >
               Quero Receber o Guia Grátis →
-            </a>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────────────────────────────────────
+          SEÇÃO 2.5 — LEAD MAGNETS EXTRAS
+      ─────────────────────────────────────────── */}
+      <section style={{ padding: "100px 24px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div
+            style={{
+              width: "56px",
+              height: "4px",
+              backgroundColor: "#E8192C",
+              marginBottom: "24px",
+            }}
+          />
+
+          <h2
+            style={{
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 900,
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              textTransform: "uppercase",
+              letterSpacing: "0.02em",
+              marginBottom: "60px",
+            }}
+          >
+            Materiais Exclusivos
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "24px",
+            }}
+          >
+            {leadMagnets.map((lm) => (
+              <div
+                key={lm.id}
+                style={{
+                  backgroundColor: "#111",
+                  border: "1px solid #222",
+                  padding: "36px 28px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "40px",
+                    height: "3px",
+                    backgroundColor: "#E8192C",
+                  }}
+                />
+                <h3
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 900,
+                    fontSize: "1.4rem",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {lm.nome}
+                </h3>
+                <p
+                  style={{
+                    color: "#888",
+                    fontSize: "0.95rem",
+                    fontFamily: "'DM Sans', sans-serif",
+                    lineHeight: "1.6",
+                    flex: 1,
+                  }}
+                >
+                  {lm.descricao}
+                </p>
+                <button
+                  onClick={() => setFormAberto(lm.nome)}
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "2px solid #E8192C",
+                    color: "#E8192C",
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 900,
+                    fontSize: "0.95rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    padding: "12px 24px",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#E8192C";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.color = "#E8192C";
+                  }}
+                >
+                  Quero Este Material →
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -297,7 +633,12 @@ export default function Home() {
       {/* ───────────────────────────────────────────
           SEÇÃO 3 — QUEM É A CRISTIANE
       ─────────────────────────────────────────── */}
-      <section style={{ padding: "100px 24px" }}>
+      <section
+        style={{
+          backgroundColor: "#111111",
+          padding: "100px 24px",
+        }}
+      >
         <div
           style={{
             maxWidth: "900px",
@@ -308,7 +649,6 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          {/* Foto */}
           <div
             style={{
               flexShrink: 0,
@@ -331,7 +671,6 @@ export default function Home() {
                 style={{ objectFit: "cover", objectPosition: "top" }}
                 priority
               />
-              {/* Borda vermelha decorativa */}
               <div
                 style={{
                   position: "absolute",
@@ -346,7 +685,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Texto */}
           <div style={{ flex: 1, minWidth: "280px" }}>
             <div
               style={{
@@ -399,10 +737,8 @@ export default function Home() {
               — mas que impulsione seus resultados.
             </p>
 
-            <a
-              href={WA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setFormAberto("Diagnóstico Gratuito")}
               style={{
                 display: "inline-block",
                 border: "2px solid #E8192C",
@@ -413,22 +749,21 @@ export default function Home() {
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 padding: "14px 32px",
-                textDecoration: "none",
+                background: "none",
+                cursor: "pointer",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  "#E8192C";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+                e.currentTarget.style.backgroundColor = "#E8192C";
+                e.currentTarget.style.color = "#fff";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                  "transparent";
-                (e.currentTarget as HTMLAnchorElement).style.color = "#E8192C";
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = "#E8192C";
               }}
             >
               Agendar um Diagnóstico
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -438,14 +773,13 @@ export default function Home() {
       ─────────────────────────────────────────── */}
       <section
         style={{
-          backgroundColor: "#111111",
+          backgroundColor: "#0A0A0A",
           padding: "100px 24px",
           textAlign: "center",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Gradiente decorativo */}
         <div
           style={{
             position: "absolute",
@@ -493,10 +827,10 @@ export default function Home() {
             guia gratuito e descubra o que está custando suas vendas.
           </p>
 
-          <a
-            href={WA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() =>
+              setFormAberto("Guia: 5 Erros que Fazem sua Apresentação Parecer Amadora")
+            }
             style={{
               display: "inline-block",
               backgroundColor: "#E8192C",
@@ -507,27 +841,24 @@ export default function Home() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               padding: "20px 56px",
-              textDecoration: "none",
+              border: "none",
+              cursor: "pointer",
               transition: "all 0.2s ease",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "#c41424";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(-2px)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow =
+              e.currentTarget.style.backgroundColor = "#c41424";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow =
                 "0 8px 30px rgba(232,25,44,0.4)";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
-                "#E8192C";
-              (e.currentTarget as HTMLAnchorElement).style.transform =
-                "translateY(0)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "none";
+              e.currentTarget.style.backgroundColor = "#E8192C";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
             Quero o Guia Grátis
-          </a>
+          </button>
 
           <p
             style={{
