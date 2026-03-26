@@ -1356,7 +1356,7 @@ export default function Home() {
           >
             © {new Date().getFullYear()} Cristiane Lopes. Todos os direitos
             reservados. &nbsp;|&nbsp;{" "}
-            <a href="#" style={{ color: "#444", textDecoration: "underline" }}>
+            <a href="/privacidade" style={{ color: "#444", textDecoration: "underline" }}>
               Política de Privacidade
             </a>
           </p>
