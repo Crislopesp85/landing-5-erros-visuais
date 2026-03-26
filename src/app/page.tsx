@@ -434,12 +434,12 @@ export default function Home() {
           <div
             style={{
               flex: "0 0 auto",
-              width: "400px",
+              width: "500px",
               maxWidth: "100%",
               margin: "0 auto",
             }}
           >
-            <div style={{ position: "relative", width: "100%", height: "400px" }}>
+            <div style={{ position: "relative", width: "100%", height: "500px" }}>
               <Image
                 src="/hero-slide.png"
                 alt="Método SLIDE™"
@@ -786,8 +786,8 @@ export default function Home() {
               marginBottom: "32px",
             }}
           >
-            Investimento: <span style={{ color: "#E8192C" }}>$2.500 — $5.000+ USD</span>{" "}
-            conforme complexidade
+            Investimento: <span style={{ color: "#E8192C" }}>sob consulta</span>{" "}
+            — conforme complexidade do projeto
           </p>
 
           <a
@@ -1059,6 +1059,115 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SEÇÃO — SOBRE MIM
+      ═══════════════════════════════════════════ */}
+      <section style={{ backgroundColor: "#0A0A0A", padding: "100px 24px" }}>
+        <div
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            display: "flex",
+            gap: "64px",
+            alignItems: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <div
+            style={{
+              flexShrink: 0,
+              width: "280px",
+              maxWidth: "100%",
+              margin: "0 auto",
+            }}
+          >
+            <div style={{ position: "relative", width: "280px", height: "350px" }}>
+              <Image
+                src="/cristiane.png"
+                alt="Cristiane Lopes"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top" }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "-12px",
+                  right: "-12px",
+                  width: "100%",
+                  height: "100%",
+                  border: "3px solid #E8192C",
+                  zIndex: -1,
+                }}
+              />
+            </div>
+          </div>
+
+          <div style={{ flex: 1, minWidth: "280px" }}>
+            {tag("Sobre Mim")}
+
+            <h2 style={{ ...sectionTitle, marginBottom: "24px" }}>
+              Cristiane Lopes
+            </h2>
+
+            <p
+              style={{
+                ...bodyText,
+                color: "#b0b0b0",
+                marginBottom: "24px",
+              }}
+            >
+              Especialista em apresentações de alta conversão. Minha missão é
+              transformar propostas comerciais em sistemas de apresentação que
+              geram ação e fechamento — combinando design estratégico, roteiros
+              de comunicação persuasiva e inteligência artificial.
+            </p>
+
+            <p
+              style={{
+                ...bodyText,
+                color: "#b0b0b0",
+                marginBottom: "36px",
+              }}
+            >
+              Enquanto a maioria ensina ferramentas, o Método SLIDE™ une
+              estratégia de comunicação + design + IA em um sistema completo
+              orientado a resultados. Ajudo profissionais que dependem de
+              apresentações a comunicar suas ideias com clareza, autoridade e
+              impacto.
+            </p>
+
+            <a
+              href={WA_DIAGNOSTICO}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-block",
+                border: "2px solid #E8192C",
+                color: "#E8192C",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 900,
+                fontSize: "1rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "14px 32px",
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#E8192C";
+                e.currentTarget.style.color = "#fff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.color = "#E8192C";
+              }}
+            >
+              Agendar um Diagnóstico
+            </a>
           </div>
         </div>
       </section>
