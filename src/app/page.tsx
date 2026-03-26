@@ -62,25 +62,18 @@ const entregaveis = [
 
 const depoimentos = [
   {
-    iniciais: "MC",
-    nome: "Mariana Costa",
-    cargo: "Coach de Liderança",
+    iniciais: "AJ",
+    nome: "Axel Jutoran",
+    cargo: "Speaker e Fundador da \"Fuerza de la IA\"",
     texto:
-      "Depois do método SLIDE™, minhas apresentações passaram a converter de verdade. A primeira proposta que apresentei com o novo formato fechou na hora.",
+      "Cris me ajudou a construir e melhorar minhas apresentações para conquistar clientes. Não apenas com um design simples, limpo e convincente que comunica o que quero, mas também me ajudou a pensar na estrutura das minhas apresentações para que o fluxo da história seja mais simples e eficaz. Sem dúvida, continuaremos a trabalhar juntos!",
   },
   {
-    iniciais: "RF",
-    nome: "Ricardo Ferreira",
-    cargo: "Consultor B2B",
+    iniciais: "RS",
+    nome: "Regiane Siqueira",
+    cargo: "Diretora de Operações na Zooba Live MKT",
     texto:
-      "Eu achava que o problema era o conteúdo. Na verdade, era o design e a narrativa. A Cristiane reorganizou tudo e o resultado foi imediato.",
-  },
-  {
-    iniciais: "AL",
-    nome: "Ana Luíza",
-    cargo: "Executiva de Vendas",
-    texto:
-      "Apresentação profissional muda a percepção de valor. Meus clientes passaram a me ver como referência antes mesmo de eu abrir a boca.",
+      "Sempre que contratamos a Cris para nos ajudar nos projetos, temos a certeza de que teremos uma entrega com muita qualidade. Entre suas inúmeras habilidades, destaco a facilidade no entendimento do briefing, a pontualidade para cumprir prazos e o cuidado com o conteúdo. Ela sempre agrega seu conhecimento, propondo ideias, textos e imagens, enriquecendo ainda mais nosso trabalho.",
   },
 ];
 
