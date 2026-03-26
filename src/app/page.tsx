@@ -1322,10 +1322,16 @@ export default function Home() {
               marginBottom: "24px",
             }}
           >
-            {["LinkedIn", "Instagram", "Behance"].map((rede) => (
+            {[
+              { nome: "LinkedIn", url: "https://www.linkedin.com/in/cristiane-lopesp/" },
+              { nome: "Instagram", url: "https://www.instagram.com/soucrislopes/" },
+              { nome: "Behance", url: "https://www.behance.net/lopespcris" },
+            ].map((rede) => (
               <a
-                key={rede}
-                href="#"
+                key={rede.nome}
+                href={rede.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   color: "#555",
                   fontSize: "0.85rem",
@@ -1336,7 +1342,7 @@ export default function Home() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#E8192C")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "#555")}
               >
-                {rede}
+                {rede.nome}
               </a>
             ))}
           </div>
