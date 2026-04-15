@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabase";
 
-const WA_URL =
-  "https://wa.me/5491125716184?text=Quero%20acessar%20o%20Checklist%3A%20Minha%20Apresenta%C3%A7%C3%A3o%20Est%C3%A1%20Pronta%20para%20Fechar%20Neg%C3%B3cio%3F";
 
 function FormCaptura() {
   const [nome, setNome] = useState("");
@@ -13,6 +12,7 @@ function FormCaptura() {
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [erro, setErro] = useState("");
+  const router = useRouter();
 
   const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const formValido = nome.length >= 2 && emailValido;
@@ -33,81 +33,9 @@ function FormCaptura() {
       return;
     }
 
-    window.open(WA_URL, "_blank");
     setEnviado(true);
     setEnviando(false);
-  }
-
-  if (enviado) {
-    return (
-      <div
-        style={{
-          backgroundColor: "#111",
-          border: "1px solid #222",
-          padding: "40px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            width: "56px",
-            height: "56px",
-            borderRadius: "50%",
-            backgroundColor: "#E8192C",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0 auto 24px",
-            fontSize: "1.5rem",
-          }}
-        >
-          ✓
-        </div>
-        <h3
-          style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontWeight: 900,
-            fontSize: "1.5rem",
-            textTransform: "uppercase",
-            marginBottom: "16px",
-            color: "#fff",
-          }}
-        >
-          Perfeito!
-        </h3>
-        <p
-          style={{
-            color: "#b0b0b0",
-            fontSize: "1rem",
-            fontFamily: "'DM Sans', sans-serif",
-            lineHeight: "1.7",
-            marginBottom: "24px",
-          }}
-        >
-          Agora é só enviar a mensagem no WhatsApp — você receberá o link do
-          checklist em instantes.
-        </p>
-        <a
-          href={WA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            border: "2px solid #E8192C",
-            color: "#E8192C",
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontWeight: 900,
-            fontSize: "0.95rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            padding: "12px 28px",
-            textDecoration: "none",
-          }}
-        >
-          Abrir WhatsApp Novamente
-        </a>
-      </div>
-    );
+    router.push("/checklist/fazer");
   }
 
   return (
@@ -175,7 +103,7 @@ function FormCaptura() {
           transition: "all 0.2s ease",
         }}
       >
-        {enviando ? "Enviando..." : "Quero Fazer o Checklist"}
+        {enviando ? "Abrindo checklist..." : "Quero Fazer o Checklist"}
       </button>
 
       <p
@@ -432,7 +360,7 @@ export default function ChecklistLanding() {
               marginBottom: "32px",
             }}
           >
-            Preencha abaixo para receber o link diretamente no seu WhatsApp.
+            Preencha abaixo e acesse o checklist imediatamente.
           </p>
 
           <FormCaptura />
