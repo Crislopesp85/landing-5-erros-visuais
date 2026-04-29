@@ -68,11 +68,13 @@ function LeadForm({
     setEnviando(true);
     setErro("");
 
-    const { error } = await supabase
-      .from("leads")
-      .insert([{ nome, email, whatsapp, lead_magnet: leadMagnet }]);
+    const res = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email, whatsapp, lead_magnet: leadMagnet }),
+    });
 
-    if (error) {
+    if (!res.ok) {
       setErro("Erro ao enviar. Tente novamente.");
       setEnviando(false);
       return;

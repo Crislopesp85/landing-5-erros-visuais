@@ -23,11 +23,13 @@ function FormCaptura() {
     setEnviando(true);
     setErro("");
 
-    const { error } = await supabase
-      .from("leads")
-      .insert([{ nome, email, whatsapp: "", lead_magnet: "Checklist Interativo" }]);
+    const res = await fetch("/api/leads", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email, whatsapp: "", lead_magnet: "Checklist Interativo" }),
+    });
 
-    if (error) {
+    if (!res.ok) {
       setErro("Erro ao enviar. Tente novamente.");
       setEnviando(false);
       return;
