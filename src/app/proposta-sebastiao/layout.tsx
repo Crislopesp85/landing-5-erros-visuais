@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Proposta Exclusiva — Sebastião Souza | SIM Treinamento e Consultoria",
+  title: "Proposta Exclusiva — Sebastião Souza | SIM Treinamentos",
   description: "Proposta de redesign estratégico preparada exclusivamente para Sebastião Souza.",
   robots: {
     index: false,

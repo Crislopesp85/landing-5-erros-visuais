@@ -205,7 +205,7 @@ export default function PropostaSebastiao() {
         {/* Logos */}
         <div className="ps-logos">
           <div style={{ color: "#AAAAAA", fontSize: 14, fontWeight: 700, letterSpacing: 2 }}>
-            SIM Treinamento e Consultoria
+            SIM Treinamentos
           </div>
           <div style={{ color: "#fff", fontSize: 14, fontWeight: 900, letterSpacing: 2 }}>
             MÉTODO SLIDE™
@@ -257,7 +257,7 @@ export default function PropostaSebastiao() {
           }}
         >
           Proposta de redesign estratégico preparada
-          exclusivamente para <strong style={{ color: "#fff" }}>Sebastião Souza | SIM Treinamento e Consultoria</strong>
+          exclusivamente para <strong style={{ color: "#fff" }}>Sebastião Souza | SIM Treinamentos</strong>
         </p>
 
         {/* Linha vermelha animada */}
