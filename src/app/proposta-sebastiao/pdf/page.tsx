@@ -130,7 +130,7 @@ export default function PropostaPDF() {
         {/* ── LOGOS ── */}
         <div className="logos">
           <span className="logo-sub">SIM Treinamentos</span>
-          <span className="logo-text">MÉTODO SLIDE™</span>
+          <span className="logo-text">MÉTODO SLIDE</span>
         </div>
 
         {/* ── HERO ── */}
@@ -282,7 +282,7 @@ export default function PropostaPDF() {
               <p className="price-qty" style={{ color: "#666" }}>35 slides</p>
               <p className="price-value" style={{ color: "#C0392B" }}>R$ 2.500</p>
               <p className="price-desc" style={{ color: "#AAAAAA" }}>
-                Redesign estratégico completo com aplicação integral do Método SLIDE™
+                Redesign estratégico completo com aplicação integral do Método SLIDE
               </p>
             </div>
             {/* Opção 2 */}
@@ -322,7 +322,7 @@ export default function PropostaPDF() {
                 a transformar seus materiais visuais em ferramentas de impacto real.
               </p>
               <p className="body" style={{ marginBottom: 12 }}>
-                O Método SLIDE™ combina storytelling estratégico, design profissional e inteligência artificial.
+                O Método SLIDE combina storytelling estratégico, design profissional e inteligência artificial.
               </p>
               <div className="pilares">
                 {["Storytelling", "Design", "IA"].map((p, i) => (
@@ -363,8 +363,8 @@ export default function PropostaPDF() {
 
         {/* ── RODAPÉ ── */}
         <div className="footer">
-          <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 11, marginBottom: 6 }}>MÉTODO SLIDE™</p>
-          <p style={{ color: "#666", fontSize: 11 }}>© 2026 Cristiane Lopes — Método SLIDE™</p>
+          <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 11, marginBottom: 6 }}>MÉTODO SLIDE</p>
+          <p style={{ color: "#666", fontSize: 11 }}>© 2026 Cristiane Lopes — Método SLIDE</p>
         </div>
 
       </div>

@@ -208,7 +208,7 @@ export default function PropostaSebastiao() {
             SIM Treinamentos
           </div>
           <div style={{ color: "#fff", fontSize: 14, fontWeight: 900, letterSpacing: 2 }}>
-            MÉTODO SLIDE™
+            MÉTODO SLIDE
           </div>
         </div>
 
@@ -456,7 +456,7 @@ export default function PropostaSebastiao() {
                 <p style={{ color: "#666", fontSize: 14, marginBottom: 24 }}>35 slides</p>
                 <p style={{ fontSize: 42, fontWeight: 900, color: "#C0392B", marginBottom: 16 }}>R$ 2.500</p>
                 <p style={{ fontSize: 14, color: "#AAAAAA", lineHeight: 1.6 }}>
-                  Redesign estratégico completo com aplicação integral do Método SLIDE™
+                  Redesign estratégico completo com aplicação integral do Método SLIDE
                 </p>
                 <a
                   href={WA_COMPLETA}
@@ -578,7 +578,7 @@ export default function PropostaSebastiao() {
                 em ferramentas de impacto real.
               </p>
               <p style={{ color: "#AAAAAA", fontSize: 16, lineHeight: 1.8, marginBottom: 32 }}>
-                O Método SLIDE™ combina storytelling estratégico, design
+                O Método SLIDE combina storytelling estratégico, design
                 profissional e inteligência artificial.
               </p>
 
@@ -661,7 +661,7 @@ export default function PropostaSebastiao() {
 
       {/* ── RODAPÉ ──────────────────────────────────────────────────────── */}
       <footer style={{ background: "#0A0A0A", padding: "40px 24px", textAlign: "center", borderTop: "1px solid #2C2C2C" }}>
-        <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 13, marginBottom: 16 }}>MÉTODO SLIDE™</p>
+        <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 13, marginBottom: 16 }}>MÉTODO SLIDE</p>
         <div style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap", marginBottom: 20 }}>
           <a
             href="https://metodo-slide.vercel.app"
@@ -685,7 +685,7 @@ export default function PropostaSebastiao() {
             Portfólio
           </a>
         </div>
-        <p style={{ color: "#666", fontSize: 13 }}>© 2026 Cristiane Lopes — Método SLIDE™</p>
+        <p style={{ color: "#666", fontSize: 13 }}>© 2026 Cristiane Lopes — Método SLIDE</p>
       </footer>
     </main>
   );
