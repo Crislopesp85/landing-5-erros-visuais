@@ -129,7 +129,7 @@ export default function PropostaPDF() {
 
         {/* ── LOGOS ── */}
         <div className="logos">
-          <span className="logo-sub">SIMTC</span>
+          <span className="logo-sub">SIM Treinamento e Consultoria</span>
           <span className="logo-text">MÉTODO SLIDE™</span>
         </div>
 
@@ -143,7 +143,7 @@ export default function PropostaPDF() {
           <div className="divider" style={{ margin: "12px auto" }} />
           <p className="hero-sub">
             Proposta de redesign estratégico preparada exclusivamente para{" "}
-            <strong style={{ color: "#fff" }}>Sebastião Souza | SIMTC</strong>
+            <strong style={{ color: "#fff" }}>Sebastião Souza | SIM Treinamento e Consultoria</strong>
           </p>
         </div>
 
