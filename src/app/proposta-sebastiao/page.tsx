@@ -661,7 +661,30 @@ export default function PropostaSebastiao() {
 
       {/* ── RODAPÉ ──────────────────────────────────────────────────────── */}
       <footer style={{ background: "#0A0A0A", padding: "40px 24px", textAlign: "center", borderTop: "1px solid #2C2C2C" }}>
-        <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 13, marginBottom: 8 }}>MÉTODO SLIDE™</p>
+        <p style={{ fontWeight: 900, letterSpacing: 3, fontSize: 13, marginBottom: 16 }}>MÉTODO SLIDE™</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap", marginBottom: 20 }}>
+          <a
+            href="https://metodo-slide.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#AAAAAA", fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#AAAAAA")}
+          >
+            metodo-slide.vercel.app
+          </a>
+          <span style={{ color: "#444" }}>|</span>
+          <a
+            href="https://portfolio-cris-lopes.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#AAAAAA", fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#fff")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#AAAAAA")}
+          >
+            Portfólio
+          </a>
+        </div>
         <p style={{ color: "#666", fontSize: 13 }}>© 2026 Cristiane Lopes — Método SLIDE™</p>
       </footer>
     </main>
