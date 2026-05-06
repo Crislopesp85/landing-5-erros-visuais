@@ -7,7 +7,8 @@ export default function PropostaPDF() {
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#fff", color: "#111" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        html, body { background: #0A0A0A; }
 
         .print-btn {
           position: fixed;
@@ -112,6 +113,11 @@ export default function PropostaPDF() {
           body { margin: 0; }
           .page { width: 100%; margin: 0; padding: 12mm 14mm; }
           @page { size: A4; margin: 0; }
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+          }
         }
       `}</style>
 
