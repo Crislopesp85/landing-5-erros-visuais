@@ -180,7 +180,7 @@ export default function PropostaSebastiao() {
         .ps-hero { padding: 48px 24px 80px; text-align: center; }
         .ps-cta { background: #C0392B; padding: 80px 24px; text-align: center; }
         .ps-logos { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto 48px; }
-        .ps-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .ps-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
         .ps-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
         .ps-about { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 48px; align-items: center; max-width: 900px; margin: 0 auto; }
         .ps-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
@@ -196,6 +196,7 @@ export default function PropostaSebastiao() {
           .ps-delivery { gap: 16px; }
           .ps-about { gap: 32px; }
           .ps-cta-btns a { width: 100%; text-align: center; }
+          .ps-section-title { margin-bottom: 28px !important; }
         }
       `}</style>
 
@@ -287,7 +288,7 @@ export default function PropostaSebastiao() {
       {/* ── SEÇÃO 2: DIAGNÓSTICO ─────────────────────────────────────────── */}
       <section className="ps-section" style={{ maxWidth: 1000, margin: "0 auto" }}>
         <FadeIn>
-          <h2 style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, textAlign: "center", marginBottom: 60 }}>
+          <h2 className="ps-section-title" style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, textAlign: "center", marginBottom: 60 }}>
             O que analisei na sua apresentação
           </h2>
         </FadeIn>
