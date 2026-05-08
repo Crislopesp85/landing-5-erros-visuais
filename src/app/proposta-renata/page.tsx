@@ -3,8 +3,14 @@
 import Image from "next/image";
 import { useState, useRef, useEffect, useCallback } from "react";
 
+const WA_A =
+  "https://wa.me/5491125716184?text=Ol%C3%A1%20Cristiane!%20Quero%20come%C3%A7ar%20com%20a%20Op%C3%A7%C3%A3o%20A%20%E2%80%94%20Apresenta%C3%A7%C3%A3o%20Institucional%20por%20R%24%201.200";
+const WA_B =
+  "https://wa.me/5491125716184?text=Ol%C3%A1%20Cristiane!%20Quero%20come%C3%A7ar%20com%20a%20Op%C3%A7%C3%A3o%20B%20%E2%80%94%20Port%C3%ADfolio%20Team%20Building%20por%20R%24%20900";
+const WA_C =
+  "https://wa.me/5491125716184?text=Ol%C3%A1%20Cristiane!%20Quero%20come%C3%A7ar%20com%20o%20Pacote%20Completo%20por%20R%24%201.800";
 const WA =
-  "https://wa.me/5491125716184?text=Ol%C3%A1%20Cristiane!%20Quero%20come%C3%A7ar%20o%20projeto%20da%20PotensRH%20por%20R%24%201.200";
+  "https://wa.me/5491125716184?text=Ol%C3%A1%20Cristiane!%20Quero%20come%C3%A7ar%20o%20projeto%20da%20PotensRH";
 
 // ─── Before/After Slider ───────────────────────────────────────────────────
 function BeforeAfterSlider({
@@ -108,7 +114,7 @@ export default function PropostaRenata() {
     { before: "/proposta-renata/slide-desafios-antes.png", after: "/proposta-renata/slide-desafios-depois.png", beforeAlt: "Slide Desafios antes", afterAlt: "Slide Desafios depois", note: "De dados enterrados em texto para números que a audiência absorve em segundos" },
     { before: "/proposta-renata/slide-lideranca-antes.png", after: "/proposta-renata/slide-lideranca-depois.png", beforeAlt: "Slide Liderança antes", afterAlt: "Slide Liderança depois", note: "A melhor frase da apresentação como elemento principal, não escondida no rodapé" },
     { before: "/proposta-renata/slide-campominado-antes.png", after: "/proposta-renata/slide-campominado-depois.png", beforeAlt: "Slide Campo Minado antes", afterAlt: "Slide Campo Minado depois", note: "Foto que representa a emoção real da atividade — confiança, tensão, superação" },
-    { before: "/proposta-renata/slide-escravosdejo-antes.png", after: "/proposta-renata/slide-escravosdejo-depois.png", beforeAlt: "Slide Escravos de Jó antes", afterAlt: "Slide Escravos de Jó depois", note: "Da foto genérica para uma imagem que transmite a energia real da dinâmica" },
+    { before: "/proposta-renata/slide-escravosdejo-antes.png", after: "/proposta-renata/slide-escravosdejo-depois.png", beforeAlt: "Slide Escravos de Jô antes", afterAlt: "Slide Escravos de Jô depois", note: "Da foto genérica para uma imagem que transmite a energia real da dinâmica" },
   ];
 
   return (
@@ -322,7 +328,7 @@ export default function PropostaRenata() {
                   ))}
                 </ul>
                 <p style={{ fontSize: 36, fontWeight: 900, color: "#C0392B", marginBottom: 20 }}>R$ 1.200</p>
-                <a href={WA} target="_blank" rel="noopener noreferrer"
+                <a href={WA_A} target="_blank" rel="noopener noreferrer"
                   style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, border: "2px solid #C0392B", color: "#C0392B", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "background 0.2s, color 0.2s" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#C0392B"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = "#C0392B"; }}
@@ -349,7 +355,7 @@ export default function PropostaRenata() {
                   ))}
                 </ul>
                 <p style={{ fontSize: 36, fontWeight: 900, color: "#C0392B", marginBottom: 20 }}>R$ 900</p>
-                <a href={WA} target="_blank" rel="noopener noreferrer"
+                <a href={WA_B} target="_blank" rel="noopener noreferrer"
                   style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, border: "2px solid #C0392B", color: "#C0392B", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "background 0.2s, color 0.2s" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#C0392B"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = "#C0392B"; }}
@@ -380,7 +386,7 @@ export default function PropostaRenata() {
                 </ul>
                 <p style={{ fontSize: 36, fontWeight: 900, color: "#fff", marginBottom: 4 }}>R$ 1.800</p>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", marginBottom: 20 }}>Separados: R$ 2.100 — Juntos: R$ 1.800</p>
-                <a href={WA} target="_blank" rel="noopener noreferrer"
+                <a href={WA_C} target="_blank" rel="noopener noreferrer"
                   style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, background: "#000", color: "#fff", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "opacity 0.2s" }}
                   onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
@@ -449,7 +455,7 @@ export default function PropostaRenata() {
             onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.02)")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)")}
           >
-            Quero começar — R$ 1.200
+            Vamos conversar
           </a>
         </FadeIn>
       </section>
