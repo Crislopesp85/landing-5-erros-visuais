@@ -201,15 +201,28 @@ export default function PropostaRenata() {
 
           <FadeIn delay={0.2}>
             <div style={{ background: "#3B0D0D", borderRadius: 12, padding: 32 }}>
-              <p style={{ fontSize: 12, fontWeight: 700, color: "#C0392B", letterSpacing: 2, marginBottom: 20 }}>⚠ OPORTUNIDADES DE MELHORIA</p>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
+              <p style={{ fontSize: 12, fontWeight: 700, color: "#C0392B", letterSpacing: 2, marginBottom: 16 }}>⚠ OPORTUNIDADES DE MELHORIA</p>
+              <p style={{ fontSize: 11, fontWeight: 700, color: "#AAAAAA", letterSpacing: 1, marginBottom: 10 }}>APRESENTAÇÃO INSTITUCIONAL</p>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
                 {[
-                  "Slide de Desafios: dados poderosos (87%, 76%, 24%) enterrados em texto corrido",
-                  "Slide de Liderança: melhor frase da apresentação escondida no final",
-                  "Slide 3: foto genérica de banco de imagens onde deveria estar foto real da Renata",
-                  "Portfólio: duas atividades com fotos que não representam bem a dinâmica",
+                  "Hierarquia visual inconsistente — alguns slides sobrecarregados de texto sem destaque claro",
+                  "Falta de fio condutor narrativo — slides parecem independentes, sem progressão que guie do problema à solução",
+                  "Imagens de banco de imagens misturadas com fotos reais — quebra a credibilidade visual",
+                  "Tipografia sem hierarquia clara — títulos e corpo têm pesos similares em vários slides",
                 ].map((item) => (
-                  <li key={item} style={{ display: "flex", gap: 10, fontSize: 15, color: "#ddd", lineHeight: 1.5 }}>
+                  <li key={item} style={{ display: "flex", gap: 10, fontSize: 14, color: "#ddd", lineHeight: 1.5 }}>
+                    <span style={{ color: "#C0392B", flexShrink: 0 }}>⚠</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <p style={{ fontSize: 11, fontWeight: 700, color: "#AAAAAA", letterSpacing: 1, marginBottom: 10 }}>PORTFÓLIO TEAM BUILDING</p>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
+                {[
+                  "Todos os slides têm a mesma estrutura — após o terceiro, a leitura fica monótona",
+                  "Ausência de introdução que contextualize o valor do Team Building antes de mostrar as atividades",
+                  "Algumas fotos com enquadramento ou qualidade que comprometem a percepção de profissionalismo",
+                ].map((item) => (
+                  <li key={item} style={{ display: "flex", gap: 10, fontSize: 14, color: "#ddd", lineHeight: 1.5 }}>
                     <span style={{ color: "#C0392B", flexShrink: 0 }}>⚠</span>{item}
                   </li>
                 ))}
@@ -279,56 +292,104 @@ export default function PropostaRenata() {
 
       {/* ── SEÇÃO 5: INVESTIMENTO ────────────────────────────────────────── */}
       <section className="pr-section-alt">
-        <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <FadeIn>
-            <h2 className="pr-section-title" style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, marginBottom: 12 }}>
+            <h2 className="pr-section-title" style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, textAlign: "center", marginBottom: 12 }}>
               Investimento
             </h2>
-            <p style={{ color: "#AAAAAA", fontSize: 16, marginBottom: 48 }}>
+            <p style={{ color: "#AAAAAA", fontSize: 16, textAlign: "center", marginBottom: 56 }}>
               Uma proposta pensada especialmente para este momento da PotensRH
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
-            <div style={{ background: "#C0392B", borderRadius: 16, padding: "48px 40px", position: "relative" }}>
-              <div style={{ position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)", background: "#fff", color: "#C0392B", fontSize: 11, fontWeight: 700, letterSpacing: 2, padding: "5px 16px", borderRadius: 20, whiteSpace: "nowrap" }}>
-                PACOTE INÍCIO INTELIGENTE
+          <div className="pr-grid-3" style={{ alignItems: "start" }}>
+            {/* OPÇÃO A */}
+            <FadeIn delay={0.1}>
+              <div style={{ background: "#1A1A1A", border: "1px solid #2C2C2C", borderRadius: 12, padding: 32 }}>
+                <p style={{ fontSize: 11, fontWeight: 700, color: "#AAAAAA", letterSpacing: 2, marginBottom: 12 }}>OPÇÃO A</p>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>Apresentação Institucional</h3>
+                <p style={{ fontSize: 13, color: "#AAAAAA", marginBottom: 24, lineHeight: 1.5 }}>Redesign estratégico completo focado no material de vendas</p>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
+                  {[
+                    "13 slides com redesign completo",
+                    "Hierarquia visual e narrativa reorganizadas",
+                    "Identidade visual padronizada",
+                    "Arquivo PowerPoint editável + PDF",
+                  ].map((item) => (
+                    <li key={item} style={{ display: "flex", gap: 8, fontSize: 13, color: "#ddd", lineHeight: 1.5 }}>
+                      <span style={{ color: "#27AE60", flexShrink: 0 }}>✓</span>{item}
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ fontSize: 36, fontWeight: 900, color: "#C0392B", marginBottom: 20 }}>R$ 1.200</p>
+                <a href={WA} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, border: "2px solid #C0392B", color: "#C0392B", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "background 0.2s, color 0.2s" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#C0392B"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = "#C0392B"; }}
+                >Quero esta opção</a>
               </div>
+            </FadeIn>
 
-              <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 28 }}>Apresentação Institucional Completa</h3>
+            {/* OPÇÃO B */}
+            <FadeIn delay={0.2}>
+              <div style={{ background: "#1A1A1A", border: "1px solid #2C2C2C", borderRadius: 12, padding: 32 }}>
+                <p style={{ fontSize: 11, fontWeight: 700, color: "#AAAAAA", letterSpacing: 2, marginBottom: 12 }}>OPÇÃO B</p>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>Portfólio Team Building</h3>
+                <p style={{ fontSize: 13, color: "#AAAAAA", marginBottom: 24, lineHeight: 1.5 }}>Redesign do catálogo de atividades com identidade renovada</p>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
+                  {[
+                    "22 slides com redesign completo",
+                    "Variação de layouts para evitar monotonia",
+                    "Template base para autonomia futura",
+                    "Arquivo PowerPoint editável + PDF",
+                  ].map((item) => (
+                    <li key={item} style={{ display: "flex", gap: 8, fontSize: 13, color: "#ddd", lineHeight: 1.5 }}>
+                      <span style={{ color: "#27AE60", flexShrink: 0 }}>✓</span>{item}
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ fontSize: 36, fontWeight: 900, color: "#C0392B", marginBottom: 20 }}>R$ 900</p>
+                <a href={WA} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, border: "2px solid #C0392B", color: "#C0392B", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "background 0.2s, color 0.2s" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#C0392B"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = "#C0392B"; }}
+                >Quero esta opção</a>
+              </div>
+            </FadeIn>
 
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12, marginBottom: 32, textAlign: "left" }}>
-                {[
-                  "13 slides com redesign estratégico completo",
-                  "Template base com identidade visual",
-                  "Guia rápido de uso",
-                ].map((item) => (
-                  <li key={item} style={{ display: "flex", gap: 10, fontSize: 15, color: "rgba(255,255,255,0.9)" }}>
-                    <span style={{ flexShrink: 0 }}>✓</span>{item}
-                  </li>
-                ))}
-              </ul>
+            {/* OPÇÃO C — destaque */}
+            <FadeIn delay={0.3}>
+              <div style={{ background: "#C0392B", borderRadius: 12, padding: 32, position: "relative" }}>
+                <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#fff", color: "#C0392B", fontSize: 10, fontWeight: 700, letterSpacing: 2, padding: "4px 14px", borderRadius: 20, whiteSpace: "nowrap" }}>
+                  ★ MAIS VANTAGEM
+                </div>
+                <p style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.7)", letterSpacing: 2, marginBottom: 12 }}>OPÇÃO C</p>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>Pacote Completo</h3>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", marginBottom: 24, lineHeight: 1.5 }}>As duas apresentações com desconto especial</p>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
+                  {[
+                    "Tudo da Opção A (13 slides)",
+                    "Tudo da Opção B (22 slides)",
+                    "Template base com guia de uso",
+                    "Economia de R$ 300 em relação ao valor separado",
+                  ].map((item) => (
+                    <li key={item} style={{ display: "flex", gap: 8, fontSize: 13, color: "rgba(255,255,255,0.9)", lineHeight: 1.5 }}>
+                      <span style={{ flexShrink: 0 }}>✓</span>{item}
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ fontSize: 36, fontWeight: 900, color: "#fff", marginBottom: 4 }}>R$ 1.800</p>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", marginBottom: 20 }}>Separados: R$ 2.100 — Juntos: R$ 1.800</p>
+                <a href={WA} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", padding: "12px", textAlign: "center", borderRadius: 8, background: "#000", color: "#fff", fontWeight: 700, fontSize: 14, textDecoration: "none", transition: "opacity 0.2s" }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "0.85")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.opacity = "1")}
+                >Quero o Pacote Completo</a>
+              </div>
+            </FadeIn>
+          </div>
 
-              <p style={{ fontSize: 52, fontWeight: 900, color: "#fff", marginBottom: 16 }}>R$ 1.200</p>
-
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, marginBottom: 32 }}>
-                Com o template entregue, você aplica a identidade visual no Portfólio com autonomia — sem custo adicional.
-              </p>
-
-              <a
-                href={WA}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: "inline-block", padding: "16px 36px", borderRadius: 8, background: "#000", color: "#fff", fontWeight: 700, fontSize: 16, textDecoration: "none", transition: "transform 0.15s" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.02)")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)")}
-              >
-                Quero começar — R$ 1.200
-              </a>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.4}>
             <div className="pr-delivery">
               <p style={{ color: "#AAAAAA", fontSize: 15 }}>📅 Prazo: até 7 dias úteis após aprovação</p>
               <p style={{ color: "#AAAAAA", fontSize: 15 }}>📁 Entrega: arquivo PowerPoint editável + versão PDF</p>
