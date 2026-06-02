@@ -260,14 +260,13 @@ function LeadForm({
               />
               <input
                 type="tel"
-                placeholder="WhatsApp (com DDD)"
-                required
+                placeholder="WhatsApp (ex: +55 11 99999-9999)"
                 value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
                 style={{
                   width: "100%",
                   padding: "14px 16px",
-                  marginBottom: "20px",
+                  marginBottom: "4px",
                   backgroundColor: "#0A0A0A",
                   border: "1px solid #333",
                   color: "#fff",
@@ -276,6 +275,9 @@ function LeadForm({
                   outline: "none",
                 }}
               />
+              <p style={{ fontSize: "0.75rem", color: "#555", fontFamily: "'DM Sans', sans-serif", marginBottom: "16px" }}>
+                Internacional? Inclua o DDI. Ex: +1 (212) 555-0100
+              </p>
 
               {erro && (
                 <p style={{ color: "#E8192C", fontSize: "0.85rem", marginBottom: "12px" }}>
