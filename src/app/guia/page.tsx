@@ -62,6 +62,9 @@ function LeadForm({
   const [whatsapp, setWhatsapp] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState("");
+  const [concluido, setConcluido] = useState(false);
+
+  const isGuia = leadMagnet.toLowerCase().includes("guia") || leadMagnet.toLowerCase().includes("erros");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -80,11 +83,15 @@ function LeadForm({
       return;
     }
 
-    const msg = encodeURIComponent(
-      `Olá! Meu nome é ${nome} e quero receber: ${leadMagnet}`
-    );
-    window.open(`https://wa.me/5491125716184?text=${msg}`, "_blank");
-    onClose();
+    if (isGuia) {
+      setConcluido(true);
+    } else {
+      const msg = encodeURIComponent(
+        `Olá! Meu nome é ${nome} e quero receber: ${leadMagnet}`
+      );
+      window.open(`https://wa.me/5491125716184?text=${msg}`, "_blank");
+      onClose();
+    }
   }
 
   return (
@@ -128,141 +135,191 @@ function LeadForm({
           ✕
         </button>
 
-        <div
-          style={{
-            width: "40px",
-            height: "3px",
-            backgroundColor: "#E8192C",
-            marginBottom: "20px",
-          }}
-        />
-
-        <h3
-          style={{
-            fontFamily: "'Barlow Condensed', sans-serif",
-            fontWeight: 900,
-            fontSize: "1.5rem",
-            textTransform: "uppercase",
-            marginBottom: "8px",
-            color: "#fff",
-          }}
-        >
-          Receba o {leadMagnet}
-        </h3>
-
-        <p
-          style={{
-            color: "#888",
-            fontSize: "0.9rem",
-            fontFamily: "'DM Sans', sans-serif",
-            marginBottom: "28px",
-          }}
-        >
-          Preencha seus dados e receba o material pelo WhatsApp.
-        </p>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Seu nome"
-            required
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "14px 16px",
-              marginBottom: "12px",
-              backgroundColor: "#0A0A0A",
-              border: "1px solid #333",
-              color: "#fff",
-              fontSize: "1rem",
-              fontFamily: "'DM Sans', sans-serif",
-              outline: "none",
-            }}
-          />
-          <input
-            type="email"
-            placeholder="Seu melhor e-mail"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "14px 16px",
-              marginBottom: "12px",
-              backgroundColor: "#0A0A0A",
-              border: "1px solid #333",
-              color: "#fff",
-              fontSize: "1rem",
-              fontFamily: "'DM Sans', sans-serif",
-              outline: "none",
-            }}
-          />
-          <input
-            type="tel"
-            placeholder="WhatsApp (com DDD)"
-            required
-            value={whatsapp}
-            onChange={(e) => setWhatsapp(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "14px 16px",
-              marginBottom: "20px",
-              backgroundColor: "#0A0A0A",
-              border: "1px solid #333",
-              color: "#fff",
-              fontSize: "1rem",
-              fontFamily: "'DM Sans', sans-serif",
-              outline: "none",
-            }}
-          />
-
-          {erro && (
-            <p
+        {concluido ? (
+          /* ── Tela de download ── */
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🎉</div>
+            <div style={{ width: "40px", height: "3px", backgroundColor: "#E8192C", margin: "0 auto 20px" }} />
+            <h3
               style={{
-                color: "#E8192C",
-                fontSize: "0.85rem",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 900,
+                fontSize: "1.6rem",
+                textTransform: "uppercase",
                 marginBottom: "12px",
+                color: "#fff",
               }}
             >
-              {erro}
+              Seu guia está pronto!
+            </h3>
+            <p
+              style={{
+                color: "#888",
+                fontSize: "0.9rem",
+                fontFamily: "'DM Sans', sans-serif",
+                marginBottom: "32px",
+                lineHeight: "1.6",
+              }}
+            >
+              Clique no botão abaixo para baixar o guia agora mesmo.
             </p>
-          )}
+            <a
+              href="/guia-5-erros.pdf"
+              download="Guia 5 Erros Visuais - Cristiane Lopes.pdf"
+              style={{
+                display: "block",
+                backgroundColor: "#E8192C",
+                color: "#fff",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 900,
+                fontSize: "1.1rem",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "16px",
+                textDecoration: "none",
+                textAlign: "center",
+                marginBottom: "16px",
+              }}
+            >
+              ⬇ Baixar o Guia Grátis
+            </a>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                color: "#555",
+                fontFamily: "'DM Sans', sans-serif",
+              }}
+            >
+              Se o download não iniciar, clique com o botão direito e salve o link.
+            </p>
+          </div>
+        ) : (
+          /* ── Formulário ── */
+          <>
+            <div style={{ width: "40px", height: "3px", backgroundColor: "#E8192C", marginBottom: "20px" }} />
 
-          <button
-            type="submit"
-            disabled={enviando}
-            style={{
-              width: "100%",
-              backgroundColor: "#E8192C",
-              color: "#fff",
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 900,
-              fontSize: "1.1rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              padding: "16px",
-              border: "none",
-              cursor: enviando ? "not-allowed" : "pointer",
-              opacity: enviando ? 0.7 : 1,
-              transition: "all 0.2s ease",
-            }}
-          >
-            {enviando ? "Enviando..." : "Receber pelo WhatsApp"}
-          </button>
+            <h3
+              style={{
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 900,
+                fontSize: "1.5rem",
+                textTransform: "uppercase",
+                marginBottom: "8px",
+                color: "#fff",
+              }}
+            >
+              Receba o {leadMagnet}
+            </h3>
 
-          <p
-            style={{
-              marginTop: "12px",
-              fontSize: "0.75rem",
-              color: "#555",
-              fontFamily: "'DM Sans', sans-serif",
-              textAlign: "center",
-            }}
-          >
-            Seus dados estão seguros. Sem spam.
-          </p>
-        </form>
+            <p
+              style={{
+                color: "#888",
+                fontSize: "0.9rem",
+                fontFamily: "'DM Sans', sans-serif",
+                marginBottom: "28px",
+              }}
+            >
+              Preencha seus dados e baixe o guia na hora.
+            </p>
+
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Seu nome"
+                required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "14px 16px",
+                  marginBottom: "12px",
+                  backgroundColor: "#0A0A0A",
+                  border: "1px solid #333",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  outline: "none",
+                }}
+              />
+              <input
+                type="email"
+                placeholder="Seu melhor e-mail"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "14px 16px",
+                  marginBottom: "12px",
+                  backgroundColor: "#0A0A0A",
+                  border: "1px solid #333",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  outline: "none",
+                }}
+              />
+              <input
+                type="tel"
+                placeholder="WhatsApp (com DDD)"
+                required
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+                style={{
+                  width: "100%",
+                  padding: "14px 16px",
+                  marginBottom: "20px",
+                  backgroundColor: "#0A0A0A",
+                  border: "1px solid #333",
+                  color: "#fff",
+                  fontSize: "1rem",
+                  fontFamily: "'DM Sans', sans-serif",
+                  outline: "none",
+                }}
+              />
+
+              {erro && (
+                <p style={{ color: "#E8192C", fontSize: "0.85rem", marginBottom: "12px" }}>
+                  {erro}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                disabled={enviando}
+                style={{
+                  width: "100%",
+                  backgroundColor: "#E8192C",
+                  color: "#fff",
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 900,
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  padding: "16px",
+                  border: "none",
+                  cursor: enviando ? "not-allowed" : "pointer",
+                  opacity: enviando ? 0.7 : 1,
+                  transition: "all 0.2s ease",
+                }}
+              >
+                {enviando ? "Salvando..." : "Quero Baixar o Guia"}
+              </button>
+
+              <p
+                style={{
+                  marginTop: "12px",
+                  fontSize: "0.75rem",
+                  color: "#555",
+                  fontFamily: "'DM Sans', sans-serif",
+                  textAlign: "center",
+                }}
+              >
+                Seus dados estão seguros. Sem spam.
+              </p>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );
@@ -403,7 +460,7 @@ export default function Home() {
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
-            100% gratuito • Você receberá o material diretamente pelo WhatsApp
+            100% gratuito • Baixe na hora, sem esperar
           </p>
         </div>
       </section>
@@ -870,7 +927,7 @@ export default function Home() {
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
-            100% gratuito • Sem spam • Direto no WhatsApp
+            100% gratuito • Sem spam • Download imediato
           </p>
         </div>
       </section>
