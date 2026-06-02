@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { supabase } from "../../lib/supabase";
 
 const WA_URL =
   "https://wa.me/5491125716184?text=Quero%20receber%20o%20Guia%3A%205%20Erros%20que%20Fazem%20sua%20Apresenta%C3%A7%C3%A3o%20Parecer%20Amadora";
