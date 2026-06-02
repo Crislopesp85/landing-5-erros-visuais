@@ -60,7 +60,6 @@ function LeadForm({
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [enviando, setEnviando] = useState(false);
-  const [erro, setErro] = useState("");
   const [concluido, setConcluido] = useState(false);
 
   const isGuia = leadMagnet.toLowerCase().includes("guia") || leadMagnet.toLowerCase().includes("erros");
@@ -68,19 +67,13 @@ function LeadForm({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setEnviando(true);
-    setErro("");
 
-    const res = await fetch("/api/leads", {
+    // Salva o lead — se falhar, não bloqueia o download
+    fetch("/api/leads", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ nome, email, whatsapp, lead_magnet: leadMagnet }),
-    });
-
-    if (!res.ok) {
-      setErro("Erro ao enviar. Tente novamente.");
-      setEnviando(false);
-      return;
-    }
+    }).catch(() => {});
 
     if (isGuia) {
       setConcluido(true);
@@ -278,12 +271,6 @@ function LeadForm({
               <p style={{ fontSize: "0.75rem", color: "#555", fontFamily: "'DM Sans', sans-serif", marginBottom: "16px" }}>
                 Internacional? Inclua o DDI. Ex: +1 (212) 555-0100
               </p>
-
-              {erro && (
-                <p style={{ color: "#E8192C", fontSize: "0.85rem", marginBottom: "12px" }}>
-                  {erro}
-                </p>
-              )}
 
               <button
                 type="submit"
